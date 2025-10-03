@@ -1,0 +1,1 @@
+# Learn Link Kenya - CBE Platform A comprehensive platform for competency-based education management in Kenya. ## Features - Teacher professional development modules - Student assessment and progress tracking - Learning resource management - Curriculum review system - Interactive dashboard with role-based access ## Live Demo [View Live Platform](your-vercel-url-will-go-here)
