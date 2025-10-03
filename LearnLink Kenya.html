@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Link Kenya - CBE Platform v4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .progress-bar {
+            transition: width 0.3s ease;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .tab-active {
+            background-color: #4f46e5;
+            color: white;
+        }
+        .tab-inactive {
+            background-color: #f3f4f6;
+            color: #6b7280;
+        }
+        .tab-inactive:hover {
+            background-color: #e5e7eb;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center min-w-0 flex-1">
+                    <div class="bg-indigo-600 text-white p-2 rounded-lg mr-2 sm:mr-3 flex-shrink-0">
+                        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.84L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.84l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+                        </svg>
+                    </div>
+                    <h1 class="text-lg sm:text-xl font-bold text-gray-900 truncate">Learn Link Kenya</h1>
+                </div>
+                <div class="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
+                    <div class="relative">
+                        <select id="userRole" class="bg-gray-100 border border-gray-300 rounded-lg px-2 py-1 sm:px-3 sm:py-2 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <option value="teacher">Teacher</option>
+                            <option value="student">Student</option>
+                            <option value="admin">Administrator</option>
+                            <option value="stakeholder">Stakeholder</option>
+                        </select>
+                    </div>
+                    <div class="bg-indigo-100 text-indigo-800 px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm font-medium hidden sm:block">
+                        Welcome, <span id="userName">Mr. Mutua Festus</span>
+                    </div>
+                    <div class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs font-medium sm:hidden">
+                        <span id="userNameMobile">Mr. Mutua</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Dashboard Header -->
+        <div class="mb-6 sm:mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Learn Link Kenya Dashboard</h2>
+            <p class="text-sm sm:text-base text-gray-600">Comprehensive platform for competency-based education management in Kenya</p>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-6 sm:mb-8">
+            <div class="bg-white rounded-xl shadow-md p-3 sm:p-6 card-hover">
+                <div class="flex items-center">
+                    <div class="bg-blue-100 p-2 sm:p-3 rounded-lg flex-shrink-0">
+                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                        </svg>
+                    </div>
+                    <div class="ml-2 sm:ml-4 min-w-0">
+                        <p class="text-xs sm:text-sm font-medium text-gray-600 truncate">Active Students</p>
+                        <p class="text-lg sm:text-2xl font-bold text-gray-900">1,247</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-md p-3 sm:p-6 card-hover">
+                <div class="flex items-center">
+                    <div class="bg-green-100 p-2 sm:p-3 rounded-lg flex-shrink-0">
+                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                    </div>
+                    <div class="ml-2 sm:ml-4 min-w-0">
+                        <p class="text-xs sm:text-sm font-medium text-gray-600 truncate">Competencies</p>
+                        <p class="text-lg sm:text-2xl font-bold text-gray-900">156</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-md p-3 sm:p-6 card-hover">
+                <div class="flex items-center">
+                    <div class="bg-purple-100 p-2 sm:p-3 rounded-lg flex-shrink-0">
+                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div class="ml-2 sm:ml-4 min-w-0">
+                        <p class="text-xs sm:text-sm font-medium text-gray-600 truncate">Assessments</p>
+                        <p class="text-lg sm:text-2xl font-bold text-gray-900">89</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-md p-3 sm:p-6 card-hover">
+                <div class="flex items-center">
+                    <div class="bg-orange-100 p-2 sm:p-3 rounded-lg flex-shrink-0">
+                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                        </svg>
+                    </div>
+                    <div class="ml-2 sm:ml-4 min-w-0">
+                        <p class="text-xs sm:text-sm font-medium text-gray-600 truncate">Resources</p>
+                        <p class="text-lg sm:text-2xl font-bold text-gray-900">342</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+            <!-- Left Column - Main Features -->
+            <div class="lg:col-span-2 space-y-4 sm:space-y-6">
+                <!-- Teacher Retooling Section -->
+                <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 space-y-2 sm:space-y-0">
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-900">Teacher Professional Development</h3>
+                        <button class="bg-indigo-600 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg hover:bg-indigo-700 transition-colors text-sm sm:text-base">
+                            View All
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-indigo-300 transition-colors cursor-pointer" onclick="openModule('cbe-fundamentals')">
+                            <div class="flex items-center mb-2">
+                                <div class="bg-blue-100 p-2 rounded-lg mr-3">
+                                    <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.84L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.84l-7-3z"/>
+                                    </svg>
+                                </div>
+                                <h4 class="font-semibold text-gray-900">CBE Fundamentals</h4>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-3">Master the core principles of competency-based education</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-gray-500">8 modules • 12 hours</span>
+                                <div class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">75% Complete</div>
+                            </div>
+                        </div>
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-indigo-300 transition-colors cursor-pointer" onclick="openModule('assessment-design')">
+                            <div class="flex items-center mb-2">
+                                <div class="bg-purple-100 p-2 rounded-lg mr-3">
+                                    <svg class="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/>
+                                    </svg>
+                                </div>
+                                <h4 class="font-semibold text-gray-900">Assessment Design</h4>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-3">Create effective competency-based assessments</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-gray-500">6 modules • 9 hours</span>
+                                <div class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">45% Complete</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student Learning Resources -->
+                <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 space-y-3 sm:space-y-0">
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-900">Learning Resources & Materials</h3>
+                        <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+                            <select class="border border-gray-300 rounded-lg px-2 py-1 sm:px-3 sm:py-1 text-xs sm:text-sm">
+                                <option>All Subjects</option>
+                                <option>Mathematics</option>
+                                <option>Science</option>
+                                <option>Language Arts</option>
+                            </select>
+                            <button class="bg-green-600 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg hover:bg-green-700 transition-colors text-sm sm:text-base" onclick="uploadResource()">
+                                Add Resource
+                            </button>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer" onclick="openResource('algebra')">
+                            <div class="flex items-center">
+                                <div class="bg-red-100 p-2 rounded-lg mr-4">
+                                    <svg class="w-5 h-5 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Algebra Fundamentals</h4>
+                                    <p class="text-sm text-gray-600">Interactive lessons and practice problems</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-sm text-gray-500">Updated 2 days ago</span>
+                                <button class="text-indigo-600 hover:text-indigo-800 font-medium text-sm">Access</button>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer" onclick="openResource('science')">
+                            <div class="flex items-center">
+                                <div class="bg-blue-100 p-2 rounded-lg mr-4">
+                                    <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Scientific Method Video Series</h4>
+                                    <p class="text-sm text-gray-600">12-part video curriculum with activities</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-sm text-gray-500">Updated 1 week ago</span>
+                                <button class="text-indigo-600 hover:text-indigo-800 font-medium text-sm">Access</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assessment & Progress Section -->
+                <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 space-y-2 sm:space-y-0">
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-900">Student Assessment & Progress</h3>
+                        <button class="bg-purple-600 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg hover:bg-purple-700 transition-colors text-sm sm:text-base" onclick="openAssessmentCenter()">
+                            Assessment Center
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-3">Recent Assessments</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors" onclick="viewAssessmentDetails('quadratic')">
+                                    <div>
+                                        <p class="font-medium text-gray-900">Quadratic Equations</p>
+                                        <p class="text-sm text-gray-600">Mathematics • Grade 9</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-bold text-green-600">85%</p>
+                                        <p class="text-xs text-gray-500">Proficient</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors" onclick="viewAssessmentDetails('cell')">
+                                    <div>
+                                        <p class="font-medium text-gray-900">Cell Structure</p>
+                                        <p class="text-sm text-gray-600">Biology • Grade 10</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-bold text-yellow-600">72%</p>
+                                        <p class="text-xs text-gray-500">Developing</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-3">Competency Progress</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm font-medium text-gray-700">Problem Solving</span>
+                                        <span class="text-sm text-gray-500">78%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-blue-600 h-2 rounded-full progress-bar" style="width: 78%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm font-medium text-gray-700">Critical Thinking</span>
+                                        <span class="text-sm text-gray-500">65%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-green-600 h-2 rounded-full progress-bar" style="width: 65%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm font-medium text-gray-700">Communication</span>
+                                        <span class="text-sm text-gray-500">82%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-purple-600 h-2 rounded-full progress-bar" style="width: 82%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Sidebar -->
+            <div class="space-y-4 sm:space-y-6">
+                <!-- Quick Actions -->
+                <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6">
+                    <h3 class="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4">Quick Actions</h3>
+                    <div class="space-y-2 sm:space-y-3">
+                        <button class="w-full bg-indigo-600 text-white py-2 sm:py-3 px-3 sm:px-4 rounded-lg hover:bg-indigo-700 transition-colors flex items-center justify-center text-sm sm:text-base" onclick="createAssessment()">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"/>
+                            </svg>
+                            Create Assessment
+                        </button>
+                        <button class="w-full bg-green-600 text-white py-2 sm:py-3 px-3 sm:px-4 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center text-sm sm:text-base" onclick="uploadResource()">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"/>
+                            </svg>
+                            Upload Resource
+                        </button>
+                        <button class="w-full bg-purple-600 text-white py-2 sm:py-3 px-3 sm:px-4 rounded-lg hover:bg-purple-700 transition-colors flex items-center justify-center text-sm sm:text-base" onclick="viewReports()">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+                            </svg>
+                            View Reports
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6">
+                    <h3 class="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4">Recent Activity</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors" onclick="viewActivity('student-completion')">
+                            <div class="bg-blue-100 p-2 rounded-full mr-3 mt-1">
+                                <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-900">Sarah Johnson completed "Algebra Basics"</p>
+                                <p class="text-xs text-gray-500">2 hours ago</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors" onclick="viewActivity('assessment-published')">
+                            <div class="bg-green-100 p-2 rounded-full mr-3 mt-1">
+                                <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-900">New assessment "Cell Biology" published</p>
+                                <p class="text-xs text-gray-500">4 hours ago</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors" onclick="viewActivity('training-scheduled')">
+                            <div class="bg-purple-100 p-2 rounded-full mr-3 mt-1">
+                                <svg class="w-4 h-4 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                                    <path fill-rule="evenodd" d="M4 5a2 2 0 012-2v1a2 2 0 002 2h8a2 2 0 002-2V3a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-900">Teacher training session scheduled</p>
+                                <p class="text-xs text-gray-500">1 day ago</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Curriculum Review -->
+                <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6">
+                    <h3 class="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4">Curriculum Review</h3>
+                    <div class="space-y-3">
+                        <div class="p-3 bg-yellow-50 border border-yellow-200 rounded-lg cursor-pointer hover:bg-yellow-100 transition-colors" onclick="openReviewPanel()">
+                            <div class="flex items-center mb-2">
+                                <svg class="w-5 h-5 text-yellow-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"/>
+                                </svg>
+                                <h4 class="font-semibold text-yellow-800">Pending Reviews</h4>
+                            </div>
+                            <p class="text-sm text-yellow-700">3 competencies need stakeholder approval</p>
+                            <button class="mt-2 text-yellow-800 hover:text-yellow-900 font-medium text-sm">
+                                Review Now →
+                            </button>
+                        </div>
+                        <div class="p-3 bg-green-50 border border-green-200 rounded-lg">
+                            <div class="flex items-center mb-2">
+                                <svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                                </svg>
+                                <h4 class="font-semibold text-green-800">Recently Approved</h4>
+                            </div>
+                            <p class="text-sm text-green-700">Mathematics curriculum updated</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Module Details -->
+    <div id="moduleModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 id="modalTitle" class="text-2xl font-bold text-gray-900"></h3>
+                    <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id="modalContent" class="space-y-4">
+                    <!-- Content will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global state management
+        let currentActiveTab = 'create';
+        let currentAssessmentData = {};
+
+        // Role-based content management
+        const userRole = document.getElementById('userRole');
+        const userName = document.getElementById('userName');
+
+        userRole.addEventListener('change', function() {
+            const role = this.value;
+            updateDashboardForRole(role);
+        });
+
+        function updateDashboardForRole(role) {
+            const roleNames = {
+                'teacher': 'Mr. Mutua Festus',
+                'student': 'Alex Smith',
+                'admin': 'Dr. Johnson',
+                'stakeholder': 'Board Member'
+            };
+            const mobileNames = {
+                'teacher': 'Mr. Mutua',
+                'student': 'Alex',
+                'admin': 'Dr. Johnson',
+                'stakeholder': 'Board Member'
+            };
+            userName.textContent = roleNames[role] || 'User';
+            
+            const userNameMobile = document.getElementById('userNameMobile');
+            if (userNameMobile) {
+                userNameMobile.textContent = mobileNames[role] || 'User';
+            }
+
+            console.log(`Dashboard updated for ${role} role`);
+        }
+
+        // Tab management functions
+        function switchTab(tabName) {
+            currentActiveTab = tabName;
+            
+            // Update tab appearances
+            const tabs = ['create', 'grade', 'analytics'];
+            tabs.forEach(tab => {
+                const tabElement = document.getElementById(`tab-${tab}`);
+                if (tabElement) {
+                    if (tab === tabName) {
+                        tabElement.className = 'px-4 py-2 rounded-lg font-medium cursor-pointer tab-active';
+                    } else {
+                        tabElement.className = 'px-4 py-2 rounded-lg font-medium cursor-pointer tab-inactive';
+                    }
+                }
+            });
+
+            // Show appropriate content
+            const contentElement = document.getElementById('tabContent');
+            if (contentElement) {
+                contentElement.innerHTML = getTabContent(tabName);
+            }
+        }
+
+        function getTabContent(tabName) {
+            switch(tabName) {
+                case 'create':
+                    return `
+                        <div class="space-y-6">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-blue-900 mb-2">Create New Assessment</h4>
+                                <p class="text-blue-800">Design competency-based assessments aligned with curriculum standards</p>
+                            </div>
+                            
+                            <form class="space-y-4" onsubmit="handleAssessmentCreation(event)">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Assessment Title</label>
+                                        <input type="text" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="e.g., Quadratic Equations Mastery" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                                        <select class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                                            <option value="">Select Subject</option>
+                                            <option value="mathematics">Mathematics</option>
+                                            <option value="science">Science</option>
+                                            <option value="english">English</option>
+                                            <option value="social-studies">Social Studies</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Grade Level</label>
+                                        <select class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                                            <option value="">Select Grade</option>
+                                            <option value="6">Grade 6</option>
+                                            <option value="7">Grade 7</option>
+                                            <option value="8">Grade 8</option>
+                                            <option value="9">Grade 9</option>
+                                            <option value="10">Grade 10</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Assessment Type</label>
+                                        <select class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                                            <option value="">Select Type</option>
+                                            <option value="formative">Formative Assessment</option>
+                                            <option value="summative">Summative Assessment</option>
+                                            <option value="diagnostic">Diagnostic Assessment</option>
+                                            <option value="performance">Performance Task</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Competencies Assessed</label>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="mr-2" value="problem-solving">
+                                            <span class="text-sm">Problem Solving</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="mr-2" value="critical-thinking">
+                                            <span class="text-sm">Critical Thinking</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="mr-2" value="communication">
+                                            <span class="text-sm">Communication</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="mr-2" value="collaboration">
+                                            <span class="text-sm">Collaboration</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Assessment Description</label>
+                                    <textarea class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" rows="4" placeholder="Describe the assessment objectives and instructions..."></textarea>
+                                </div>
+                                
+                                <div class="flex justify-end space-x-3">
+                                    <button type="button" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">Save as Draft</button>
+                                    <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">Create Assessment</button>
+                                </div>
+                            </form>
+                        </div>
+                    `;
+                    
+                case 'grade':
+                    return `
+                        <div class="space-y-6">
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-green-900 mb-2">Grade Student Assessments</h4>
+                                <p class="text-green-800">Review and evaluate student submissions using competency-based rubrics</p>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 cursor-pointer" onclick="openGradingInterface('sarah-johnson')">
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <h5 class="font-semibold text-gray-900">Sarah Johnson - Quadratic Equations</h5>
+                                            <p class="text-sm text-gray-600">Submitted: 2 hours ago • Grade 9 Mathematics</p>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Pending Review</span>
+                                            <button class="text-indigo-600 hover:text-indigo-800 font-medium text-sm">Grade Now</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 cursor-pointer" onclick="openGradingInterface('james-mwangi')">
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <h5 class="font-semibold text-gray-900">James Mwangi - Cell Biology Lab</h5>
+                                            <p class="text-sm text-gray-600">Submitted: 4 hours ago • Grade 10 Science</p>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Pending Review</span>
+                                            <button class="text-indigo-600 hover:text-indigo-800 font-medium text-sm">Grade Now</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="border border-gray-200 rounded-lg p-4 bg-green-50">
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <h5 class="font-semibold text-gray-900">Mary Wanjiku - Essay Analysis</h5>
+                                            <p class="text-sm text-gray-600">Graded: 1 day ago • Grade 8 English</p>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Completed</span>
+                                            <button class="text-indigo-600 hover:text-indigo-800 font-medium text-sm">View Results</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-3">Grading Statistics</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div class="text-center">
+                                        <p class="text-2xl font-bold text-yellow-600">12</p>
+                                        <p class="text-sm text-gray-600">Pending Reviews</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <p class="text-2xl font-bold text-green-600">45</p>
+                                        <p class="text-sm text-gray-600">Completed This Week</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <p class="text-2xl font-bold text-blue-600">3.2</p>
+                                        <p class="text-sm text-gray-600">Avg. Days to Grade</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                case 'analytics':
+                    return `
+                        <div class="space-y-6">
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-900 mb-2">Assessment Analytics & Insights</h4>
+                                <p class="text-purple-800">Track student performance and competency mastery across assessments</p>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                                    <h5 class="font-semibold mb-3">Competency Mastery Overview</h5>
+                                    <div class="space-y-3">
+                                        <div>
+                                            <div class="flex justify-between mb-1">
+                                                <span class="text-sm font-medium">Problem Solving</span>
+                                                <span class="text-sm text-gray-500">78% Mastery</span>
+                                            </div>
+                                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                                <div class="bg-blue-600 h-2 rounded-full" style="width: 78%"></div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between mb-1">
+                                                <span class="text-sm font-medium">Critical Thinking</span>
+                                                <span class="text-sm text-gray-500">65% Mastery</span>
+                                            </div>
+                                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                                <div class="bg-green-600 h-2 rounded-full" style="width: 65%"></div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between mb-1">
+                                                <span class="text-sm font-medium">Communication</span>
+                                                <span class="text-sm text-gray-500">82% Mastery</span>
+                                            </div>
+                                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                                <div class="bg-purple-600 h-2 rounded-full" style="width: 82%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                                    <h5 class="font-semibold mb-3">Recent Assessment Performance</h5>
+                                    <div class="space-y-3">
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-sm">Quadratic Equations</span>
+                                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">85% Avg</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-sm">Cell Biology</span>
+                                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">72% Avg</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-sm">Essay Analysis</span>
+                                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">88% Avg</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white border border-gray-200 rounded-lg p-4">
+                                <h5 class="font-semibold mb-3">Student Progress Tracking</h5>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm">
+                                        <thead>
+                                            <tr class="border-b">
+                                                <th class="text-left py-2">Student</th>
+                                                <th class="text-left py-2">Assessments Completed</th>
+                                                <th class="text-left py-2">Average Score</th>
+                                                <th class="text-left py-2">Competency Level</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="border-b">
+                                                <td class="py-2">Sarah Johnson</td>
+                                                <td class="py-2">12</td>
+                                                <td class="py-2">85%</td>
+                                                <td class="py-2"><span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Proficient</span></td>
+                                            </tr>
+                                            <tr class="border-b">
+                                                <td class="py-2">James Mwangi</td>
+                                                <td class="py-2">10</td>
+                                                <td class="py-2">78%</td>
+                                                <td class="py-2"><span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">Developing</span></td>
+                                            </tr>
+                                            <tr class="border-b">
+                                                <td class="py-2">Mary Wanjiku</td>
+                                                <td class="py-2">14</td>
+                                                <td class="py-2">92%</td>
+                                                <td class="py-2"><span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Advanced</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                default:
+                    return '<p>Content not found</p>';
+            }
+        }
+
+        // Assessment Center functionality
+        function openAssessmentCenter() {
+            const modal = document.getElementById('moduleModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+
+            modalTitle.textContent = 'Assessment Center';
+            modalContent.innerHTML = `
+                <div class="space-y-6">
+                    <!-- Tab Navigation -->
+                    <div class="flex space-x-2 bg-gray-100 p-1 rounded-lg">
+                        <button id="tab-create" class="px-4 py-2 rounded-lg font-medium cursor-pointer tab-active" onclick="switchTab('create')">
+                            Create Assessment
+                        </button>
+                        <button id="tab-grade" class="px-4 py-2 rounded-lg font-medium cursor-pointer tab-inactive" onclick="switchTab('grade')">
+                            Grade Assessments
+                        </button>
+                        <button id="tab-analytics" class="px-4 py-2 rounded-lg font-medium cursor-pointer tab-inactive" onclick="switchTab('analytics')">
+                            Analytics
+                        </button>
+                    </div>
+                    
+                    <!-- Tab Content -->
+                    <div id="tabContent">
+                        ${getTabContent('create')}
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        // Grading interface
+        function openGradingInterface(studentId) {
+            const modal = document.getElementById('moduleModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+
+            const studentData = {
+                'sarah-johnson': {
+                    name: 'Sarah Johnson',
+                    assessment: 'Quadratic Equations Assessment',
+                    subject: 'Mathematics',
+                    grade: '9'
+                },
+                'james-mwangi': {
+                    name: 'James Mwangi',
+                    assessment: 'Cell Biology Lab Report',
+                    subject: 'Science',
+                    grade: '10'
+                }
+            };
+
+            const student = studentData[studentId] || studentData['sarah-johnson'];
+
+            modalTitle.textContent = `Grade Assessment - ${student.name}`;
+            modalContent.innerHTML = `
+                <div class="space-y-6">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-blue-900 mb-2">${student.assessment}</h4>
+                        <p class="text-blue-800">${student.subject} • Grade ${student.grade} • Submitted 2 hours ago</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div>
+                            <h5 class="font-semibold mb-3">Student Submission</h5>
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <p class="text-sm text-gray-700 mb-3">Student's work and responses would be displayed here. This could include:</p>
+                                <ul class="text-sm text-gray-600 space-y-1 ml-4">
+                                    <li>• Written responses to questions</li>
+                                    <li>• Mathematical calculations and work shown</li>
+                                    <li>• Uploaded files or images</li>
+                                    <li>• Performance task artifacts</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h5 class="font-semibold mb-3">Competency-Based Rubric</h5>
+                            <form onsubmit="submitGrade(event, '${studentId}')">
+                                <div class="space-y-4">
+                                    <div class="border border-gray-200 rounded-lg p-3">
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Problem Solving</label>
+                                        <select class="w-full border border-gray-300 rounded px-3 py-2 text-sm" required>
+                                            <option value="">Select Level</option>
+                                            <option value="4">4 - Advanced (Exceeds Expectations)</option>
+                                            <option value="3">3 - Proficient (Meets Expectations)</option>
+                                            <option value="2">2 - Developing (Approaching Expectations)</option>
+                                            <option value="1">1 - Beginning (Below Expectations)</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="border border-gray-200 rounded-lg p-3">
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Mathematical Reasoning</label>
+                                        <select class="w-full border border-gray-300 rounded px-3 py-2 text-sm" required>
+                                            <option value="">Select Level</option>
+                                            <option value="4">4 - Advanced</option>
+                                            <option value="3">3 - Proficient</option>
+                                            <option value="2">2 - Developing</option>
+                                            <option value="1">1 - Beginning</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="border border-gray-200 rounded-lg p-3">
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Communication</label>
+                                        <select class="w-full border border-gray-300 rounded px-3 py-2 text-sm" required>
+                                            <option value="">Select Level</option>
+                                            <option value="4">4 - Advanced</option>
+                                            <option value="3">3 - Proficient</option>
+                                            <option value="2">2 - Developing</option>
+                                            <option value="1">1 - Beginning</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Feedback Comments</label>
+                                        <textarea class="w-full border border-gray-300 rounded px-3 py-2 text-sm" rows="4" placeholder="Provide specific feedback on strengths and areas for improvement..."></textarea>
+                                    </div>
+                                    
+                                    <div class="flex justify-end space-x-3">
+                                        <button type="button" onclick="switchTab('grade')" class="px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-50">Back to List</button>
+                                        <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Submit Grade</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        // Form submission handlers
+        function handleAssessmentCreation(event) {
+            event.preventDefault();
+            alert('Assessment created successfully! It has been added to your assessment library and is ready for student assignment.');
+            switchTab('grade');
+        }
+
+        function submitGrade(event, studentId) {
+            event.preventDefault();
+            alert(`Grade submitted successfully for ${studentId}! The student will receive feedback and the grade has been recorded in the gradebook.`);
+            switchTab('grade');
+        }
+
+        // Module opening functionality
+        function openModule(moduleId) {
+            const moduleData = {
+                'cbe-fundamentals': {
+                    title: 'CBE Fundamentals',
+                    content: `
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-blue-900 mb-2">Course Overview</h4>
+                                <p class="text-blue-800">Master the core principles of competency-based education through interactive modules and practical applications.</p>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="border border-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-50" onclick="startModule('cbe-intro')">
+                                    <h5 class="font-semibold mb-2">Module 1: Introduction to CBE</h5>
+                                    <p class="text-sm text-gray-600 mb-2">Understanding the shift from traditional to competency-based education</p>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs text-gray-500">45 minutes</span>
+                                        <button class="bg-green-600 text-white px-3 py-1 rounded text-sm">Complete</button>
+                                    </div>
+                                </div>
+                                <div class="border border-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-50" onclick="startModule('learning-progressions')">
+                                    <h5 class="font-semibold mb-2">Module 2: Learning Progressions</h5>
+                                    <p class="text-sm text-gray-600 mb-2">Designing clear pathways for student advancement</p>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs text-gray-500">60 minutes</span>
+                                        <button class="bg-indigo-600 text-white px-3 py-1 rounded text-sm">Start</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">Progress Tracking</h4>
+                                <div class="w-full bg-gray-200 rounded-full h-3">
+                                    <div class="bg-green-600 h-3 rounded-full" style="width: 75%"></div>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-2">6 of 8 modules completed</p>
+                            </div>
+                        </div>
+                    `
+                },
+                'assessment-design': {
+                    title: 'Assessment Design',
+                    content: `
+                        <div class="space-y-4">
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-900 mb-2">Course Overview</h4>
+                                <p class="text-purple-800">Learn to create effective, authentic assessments that measure true competency mastery.</p>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="border border-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-50" onclick="startModule('authentic-assessment')">
+                                    <h5 class="font-semibold mb-2">Authentic Assessment Strategies</h5>
+                                    <p class="text-sm text-gray-600 mb-2">Moving beyond traditional testing to real-world applications</p>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs text-gray-500">90 minutes</span>
+                                        <button class="bg-indigo-600 text-white px-3 py-1 rounded text-sm">Continue</button>
+                                    </div>
+                                </div>
+                                <div class="border border-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-50" onclick="startModule('rubric-development')">
+                                    <h5 class="font-semibold mb-2">Rubric Development</h5>
+                                    <p class="text-sm text-gray-600 mb-2">Creating clear, measurable criteria for competency evaluation</p>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs text-gray-500">75 minutes</span>
+                                        <button class="bg-gray-400 text-white px-3 py-1 rounded text-sm">Locked</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                }
+            };
+
+            const modal = document.getElementById('moduleModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+
+            modalTitle.textContent = moduleData[moduleId].title;
+            modalContent.innerHTML = moduleData[moduleId].content;
+            modal.classList.remove('hidden');
+        }
+
+        function startModule(moduleId) {
+            alert(`Starting module: ${moduleId}. This would launch the interactive learning content with videos, activities, and assessments.`);
+        }
+
+        // Resource management
+        function openResource(resourceId) {
+            const resourceData = {
+                'algebra': {
+                    title: 'Algebra Fundamentals',
+                    content: 'Interactive algebra lessons with step-by-step problem solving'
+                },
+                'science': {
+                    title: 'Scientific Method Video Series',
+                    content: '12-part video curriculum with hands-on activities'
+                }
+            };
+
+            const resource = resourceData[resourceId];
+            alert(`Opening resource: ${resource.title}\n\n${resource.content}\n\nThis would launch the full resource viewer with interactive content.`);
+        }
+
+        // Activity and assessment viewers
+        function viewAssessmentDetails(assessmentId) {
+            const assessmentData = {
+                'quadratic': 'Quadratic Equations Assessment - Detailed performance analytics and student responses',
+                'cell': 'Cell Structure Assessment - Lab report analysis and competency breakdown'
+            };
+
+            alert(`Assessment Details: ${assessmentData[assessmentId]}\n\nThis would show detailed analytics, student performance data, and individual responses.`);
+        }
+
+        function viewActivity(activityId) {
+            const activityData = {
+                'student-completion': 'Sarah Johnson completed Algebra Basics with 92% proficiency in problem-solving competencies.',
+                'assessment-published': 'New Cell Biology assessment published with updated rubrics aligned to curriculum standards.',
+                'training-scheduled': 'Professional development session on CBE implementation scheduled for next Friday.'
+            };
+
+            alert(`Activity Details: ${activityData[activityId]}\n\nThis would show full activity details and related actions.`);
+        }
+
+        // Quick action functions
+        function createAssessment() {
+            openAssessmentCenter();
+            switchTab('create');
+        }
+
+        function uploadResource() {
+            const modal = document.getElementById('moduleModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+
+            modalTitle.textContent = 'Upload Learning Resource';
+            modalContent.innerHTML = `
+                <div class="space-y-6">
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-green-900 mb-2">Add New Learning Resource</h4>
+                        <p class="text-green-800">Upload documents, videos, and interactive materials for student learning</p>
+                    </div>
+                    
+                    <form class="space-y-4" onsubmit="handleResourceUpload(event)">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Resource Title</label>
+                                <input type="text" class="w-full border border-gray-300 rounded-lg px-3 py-2" placeholder="e.g., Geometry Practice Problems" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                                <select class="w-full border border-gray-300 rounded-lg px-3 py-2" required>
+                                    <option value="">Select Subject</option>
+                                    <option value="mathematics">Mathematics</option>
+                                    <option value="science">Science</option>
+                                    <option value="english">English</option>
+                                    <option value="social-studies">Social Studies</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Resource Type</label>
+                            <select class="w-full border border-gray-300 rounded-lg px-3 py-2" required>
+                                <option value="">Select Type</option>
+                                <option value="document">Document/PDF</option>
+                                <option value="video">Video</option>
+                                <option value="interactive">Interactive Activity</option>
+                                <option value="presentation">Presentation</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">File Upload</label>
+                            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                                    <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <p class="mt-2 text-sm text-gray-600">Click to upload or drag and drop</p>
+                                <p class="text-xs text-gray-500">PDF, DOC, MP4, or other educational materials</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                            <textarea class="w-full border border-gray-300 rounded-lg px-3 py-2" rows="3" placeholder="Describe the learning objectives and how to use this resource..."></textarea>
+                        </div>
+                        
+                        <div class="flex justify-end space-x-3">
+                            <button type="button" onclick="closeModal()" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">Cancel</button>
+                            <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">Upload Resource</button>
+                        </div>
+                    </form>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function handleResourceUpload(event) {
+            event.preventDefault();
+            alert('Resource uploaded successfully! It has been added to the learning materials library and is available for student access.');
+            closeModal();
+        }
+
+        function viewReports() {
+            const modal = document.getElementById('moduleModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+
+            modalTitle.textContent = 'Comprehensive Reports Dashboard';
+            modalContent.innerHTML = `
+                <div class="space-y-6">
+                    <div class="bg-purple-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-purple-900 mb-2">Analytics & Reporting</h4>
+                        <p class="text-purple-800">Comprehensive insights into student progress, competency mastery, and curriculum effectiveness</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="bg-white border border-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-50" onclick="openReport('student-progress')">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-blue-100 p-2 rounded-lg mr-3">
+                                    <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                                    </svg>
+                                </div>
+                                <h5 class="font-semibold">Student Progress</h5>
+                            </div>
+                            <p class="text-sm text-gray-600">Individual and class-wide progress tracking</p>
+                        </div>
+                        
+                        <div class="bg-white border border-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-50" onclick="openReport('competency-analysis')">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-green-100 p-2 rounded-lg mr-3">
+                                    <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                                    </svg>
+                                </div>
+                                <h5 class="font-semibold">Competency Analysis</h5>
+                            </div>
+                            <p class="text-sm text-gray-600">Mastery levels across all competencies</p>
+                        </div>
+                        
+                        <div class="bg-white border border-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-50" onclick="openReport('curriculum-effectiveness')">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-purple-100 p-2 rounded-lg mr-3">
+                                    <svg class="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+                                    </svg>
+                                </div>
+                                <h5 class="font-semibold">Curriculum Effectiveness</h5>
+                            </div>
+                            <p class="text-sm text-gray-600">Assessment and resource performance metrics</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-semibold mb-3">Quick Statistics</h4>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                            <div>
+                                <p class="text-2xl font-bold text-blue-600">1,247</p>
+                                <p class="text-sm text-gray-600">Total Students</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold text-green-600">78%</p>
+                                <p class="text-sm text-gray-600">Avg Competency</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold text-purple-600">156</p>
+                                <p class="text-sm text-gray-600">Active Assessments</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold text-orange-600">342</p>
+                                <p class="text-sm text-gray-600">Learning Resources</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function openReport(reportType) {
+            alert(`Opening ${reportType} report. This would display detailed analytics with charts, graphs, and exportable data for comprehensive analysis.`);
+        }
+
+        function openReviewPanel() {
+            const modal = document.getElementById('moduleModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+
+            modalTitle.textContent = 'Curriculum Review Panel';
+            modalContent.innerHTML = `
+                <div class="space-y-6">
+                    <div class="bg-yellow-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-yellow-900 mb-2">Stakeholder Review Process</h4>
+                        <p class="text-yellow-800">Review and approve curriculum changes, competency definitions, and assessment standards</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="border border-yellow-200 bg-yellow-50 rounded-lg p-4">
+                            <div class="flex justify-between items-start mb-3">
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">Mathematics Competency Framework Update</h5>
+                                    <p class="text-sm text-gray-600">Proposed changes to problem-solving assessment criteria</p>
+                                </div>
+                                <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Pending Review</span>
+                            </div>
+                            <div class="flex space-x-3">
+                                <button class="bg-green-600 text-white px-3 py-1 rounded text-sm hover:bg-green-700" onclick="reviewAction('approve', 'math-framework')">Approve</button>
+                                <button class="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700" onclick="reviewAction('reject', 'math-framework')">Request Changes</button>
+                                <button class="bg-gray-600 text-white px-3 py-1 rounded text-sm hover:bg-gray-700" onclick="reviewAction('view', 'math-framework')">View Details</button>
+                            </div>
+                        </div>
+                        
+                        <div class="border border-yellow-200 bg-yellow-50 rounded-lg p-4">
+                            <div class="flex justify-between items-start mb-3">
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">Science Lab Assessment Rubric</h5>
+                                    <p class="text-sm text-gray-600">New rubric for hands-on laboratory competencies</p>
+                                </div>
+                                <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Pending Review</span>
+                            </div>
+                            <div class="flex space-x-3">
+                                <button class="bg-green-600 text-white px-3 py-1 rounded text-sm hover:bg-green-700" onclick="reviewAction('approve', 'science-rubric')">Approve</button>
+                                <button class="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700" onclick="reviewAction('reject', 'science-rubric')">Request Changes</button>
+                                <button class="bg-gray-600 text-white px-3 py-1 rounded text-sm hover:bg-gray-700" onclick="reviewAction('view', 'science-rubric')">View Details</button>
+                            </div>
+                        </div>
+                        
+                        <div class="border border-green-200 bg-green-50 rounded-lg p-4">
+                            <div class="flex justify-between items-start mb-3">
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">English Communication Standards</h5>
+                                    <p class="text-sm text-gray-600">Updated speaking and writing competency levels</p>
+                                </div>
+                                <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Approved</span>
+                            </div>
+                            <p class="text-sm text-green-700">Approved by Dr. Johnson on March 15, 2024</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function reviewAction(action, itemId) {
+            const actions = {
+                'approve': 'approved and will be implemented',
+                'reject': 'sent back for revisions with feedback',
+                'view': 'opened for detailed review'
+            };
+            
+            alert(`Curriculum item ${itemId} has been ${actions[action]}. ${action === 'view' ? 'This would open the full document with change tracking and comment capabilities.' : 'Stakeholders and curriculum team have been notified.'}`);
+        }
+
+        function closeModal() {
+            document.getElementById('moduleModal').classList.add('hidden');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('moduleModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Initialize dashboard
+        updateDashboardForRole('teacher');
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98663a69607c7412',t:'MTc1OTA5MzgzMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
